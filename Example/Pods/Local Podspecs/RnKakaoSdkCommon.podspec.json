@@ -1,0 +1,27 @@
+{
+  "name": "RnKakaoSdkCommon",
+  "version": "0.1.0",
+  "summary": "React Native KakaoSDK Common - KakaoTam",
+  "description": "React Native KakaoSDK Common - KakaoTam",
+  "homepage": "https://github.com/kakaotam/RnKakaoSdkCommon",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "wisdomcdh": "wisdomcdh@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/kakaotam/RnKakaoSdkCommon.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source_files": "RnKakaoSdkCommon/Classes/**/*",
+  "dependencies": {
+    "KakaoSDKCommon": [
+      ">=2.11.0"
+    ]
+  }
+}

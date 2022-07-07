@@ -1,0 +1,6 @@
+framework module Pods_RnKakaoSdkCommon_Tests {
+  umbrella header "Pods-RnKakaoSdkCommon_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
