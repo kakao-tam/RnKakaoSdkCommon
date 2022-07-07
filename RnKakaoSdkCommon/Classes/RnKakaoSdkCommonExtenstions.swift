@@ -22,7 +22,7 @@ public extension Error {
         }
         return "UnknownError"
     }
-    
+
     func rnMessage() -> String {
         if let e = self as? SdkError {
             if e.isAuthFailed {
@@ -52,56 +52,56 @@ public extension NSDictionary {
         }
         return defaultValue
     }
-    
+
     private func boolean(_ key: String,_ defaultValue: Bool? = nil) -> Bool? {
         if let data = self[key] {
             return data as? Bool
         }
         return defaultValue
     }
-    
+
     private func date(_ key: String, _ defaultValue: Date? = nil) -> Date? {
         if let data = self[key] as? NSNumber {
             return Date(timeIntervalSince1970: TimeInterval(truncating: data) / 1000)
         }
         return defaultValue
     }
-    
+
     private func int(_ key: String, _ defaultValue: Int? = nil) -> Int? {
         if let data = self[key] as? Int {
             return data
         }
         return defaultValue
     }
-    
+
     private func int64(_ key: String, _ defaultValue: Int64? = nil) -> Int64? {
         if let data = self[key] as? Int64 {
             return data
         }
         return defaultValue
     }
-    
+
     private func dic(_ key: String) -> NSDictionary? {
         if let data =  self[key] {
             return data as? NSDictionary
         }
         return nil
     }
-    
+
     private func array(_ key: String) -> NSArray? {
         if let data = self[key] {
             return data as? NSArray
         }
         return nil
     }
-    
+
     private func stringArray(_ key: String) -> [String]? {
         if let data = self.array("propertyKeys") {
             return data.compactMap{( $0 as? String ?? "" )}
         }
         return nil
     }
-    
+
     func toParam<T: Decodable>(_ t: T.Type, key: String = "_json_") -> T? {
         if let data = self.string(key)?.data(using: .utf8) {
             return try? SdkJSONDecoder.default.decode(T.self, from: data)

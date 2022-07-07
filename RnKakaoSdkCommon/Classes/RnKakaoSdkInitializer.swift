@@ -10,13 +10,13 @@ import Foundation
 import KakaoSDKCommon
 
 public final class RnKakaoSdkInitializer {
-    static let shared = RnKakaoSdkInitializer()
-    
-    var initialized: Bool = false
-    
+    public static let shared = RnKakaoSdkInitializer()
+
+    public var initialized: Bool = false
+
     private init() {}
-    
-    func ensure() {
+
+    public func ensure() {
         if !initialized {
             let appKey = Bundle.main.object(forInfoDictionaryKey: "KAKAO_NATIVE_APP_KEY") as? String
             if let appKey = appKey {
