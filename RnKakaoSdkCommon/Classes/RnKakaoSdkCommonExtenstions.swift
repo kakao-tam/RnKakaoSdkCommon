@@ -109,3 +109,38 @@ public extension NSDictionary {
         return nil
     }
 }
+
+public class Converter {
+    static let shared = Converter()
+    
+    let encoder: JSONEncoder;
+    
+    private init() {
+        encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .custom({ date, encoder in
+            var container = encoder.singleValueContainer()
+            let mils = (date.timeIntervalSince1970 + Double(TimeZone.current.secondsFromGMT())) * 1000.0
+            try container.encode(Int64(mils.rounded()))
+        })
+    }
+    
+    func toJson(_ dic: [String:Any]) -> String {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dic)
+            return String(data: jsonData, encoding: String.Encoding.utf8) ?? "{}"
+        } catch {
+            return "!e{\"desc\":\"\(error.localizedDescription)\",\"msg\":\"\(error)\"}"
+        }
+    }
+}
+
+public extension Encodable {
+    func toJsonString() -> String {
+        do {
+            let jsonData = try Converter.shared.encoder.encode(self)
+            return String(data: jsonData, encoding: String.Encoding.utf8) ?? "{}"
+        } catch {
+            return "!e{\"desc\":\"\(error.localizedDescription)\",\"msg\":\"\(error)\"}"
+        }
+    }
+}
