@@ -111,7 +111,7 @@ public extension NSDictionary {
 }
 
 public class Converter {
-    static let shared = Converter()
+    public static let shared = Converter()
     
     let encoder: JSONEncoder;
     
@@ -124,7 +124,7 @@ public class Converter {
         })
     }
     
-    func toJson(_ dic: [String:Any]) -> String {
+    public func toJson(_ dic: [String:Any]) -> String {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dic)
             return String(data: jsonData, encoding: String.Encoding.utf8) ?? "{}"
@@ -142,5 +142,11 @@ public extension Encodable {
         } catch {
             return "!e{\"desc\":\"\(error.localizedDescription)\",\"msg\":\"\(error)\"}"
         }
+    }
+}
+
+public extension Array where Element == SelectedUser {
+    func toDic() -> [[String:Any]] {
+        return self.compactMap { $0.toDic() }
     }
 }
