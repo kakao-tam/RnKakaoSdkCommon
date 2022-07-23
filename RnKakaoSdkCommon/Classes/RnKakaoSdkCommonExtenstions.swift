@@ -144,9 +144,3 @@ public extension Encodable {
         }
     }
 }
-
-public extension Array where Element == SelectedUser {
-    func toDic() -> [[String:Any]] {
-        return self.compactMap { $0.toDic() }
-    }
-}
