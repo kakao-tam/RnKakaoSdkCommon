@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RnKakaoSdkCommon'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'React Native KakaoSDK Common - KakaoTam'
   s.description      = 'React Native KakaoSDK Common - KakaoTam, This library is used only with the React Native KakaoSDK module.'
   s.homepage         = 'https://github.com/kakao-tam/RnKakaoSdkCommon'
